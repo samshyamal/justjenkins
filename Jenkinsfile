@@ -45,7 +45,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Authorize DevHub') {
-               rc = bat returnStatus: true, script: "${sfdx} force:auth:jwt:grant --clientid 3MVG9n_HvETGhr3AY.ORKMs45bSz6521MMTJPoHhtlF2Sr6NzOGMNdi7Nw4FUzalrNNo.5.FIsxyS1v1GmfQg --jwtkeyfile  \"${jwt_key_file}\" --username dasari.avinesh-vt6x@force.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername"
+               rc = bat returnStatus: true, script: "${sfdx} sfdx force:auth:jwt:grant --clientid 3MVG9n_HvETGhr3AY.ORKMs45bSz6521MMTJPoHhtlF2Sr6NzOGMNdi7Nw4FUzalrNNo.5.FIsxyS1v1GmfQg --jwtkeyfile  \"${jwt_key_file}\" --username dasari.avinesh-vt6x@force.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
                 }
