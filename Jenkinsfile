@@ -45,14 +45,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
         stage('Create Test Scratch Org') {
-<<<<<<< HEAD
-                rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername"
-=======
-                rc = command "${toolbelt} force:org:create -s -f config/project-scratch-def.json -a ebikes"
->>>>>>> 7df4f3d50fb1c08e9c0909a8c2899447e61789b8
-                if (rc != 0) {
-                    error 'Salesforce test scratch org creation failed.'
-                }
+                rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername"             
             }
 
         
