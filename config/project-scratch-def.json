@@ -1,0 +1,12 @@
+{
+    "orgName": "MyCompany",
+    "edition": "Developer",
+    "workitem__c": "W-12345678",
+    "release__c": "June 2018 pilot",
+    
+    "settings": {
+        "omniChannelSettings": {
+             "enableOmniChannel": true
+    }
+          }
+}
