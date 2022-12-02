@@ -10,6 +10,7 @@ node {
     def SFDC_HOST = env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
+    def TEST_LEVEL='RunLocalTests'
 
     println 'KEY IS' 
     println JWT_KEY_CRED_ID
@@ -50,6 +51,16 @@ node {
                 rc = command "${toolbelt} sfdx force:org:create -f config/project-scratch-def.json --durationdays 1"
 
             }
+            // -------------------------------------------------------------------------
+// Run unit tests in test scratch org.
+// -------------------------------------------------------------------------
+
+stage('Run Tests In Test Scratch Org') {
+    rc = command "${toolbelt}/sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+    if (rc != 0) {
+        error 'Salesforce unit test run in test scratch org failed.'
+    }
+}
 
         
     }
