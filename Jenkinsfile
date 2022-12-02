@@ -45,7 +45,10 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
         stage('Create Test Scratch Org') {
-                rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername"             
+                rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername" 
+                rc = command "${toolbelt} force:org:create -f project-scratch-def.json --nonamespace"
+                rc = command "${toolbelt} sfdx force:org:create -f config/project-scratch-def.json --durationdays 1"
+
             }
 
         
