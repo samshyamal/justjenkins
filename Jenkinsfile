@@ -45,7 +45,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
         stage('Create Test Scratch Org') {
-                rc = command "${toolbelt} force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+                rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername"
                 if (rc != 0) {
                     error 'Salesforce test scratch org creation failed.'
                 }
