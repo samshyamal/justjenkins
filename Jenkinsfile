@@ -36,7 +36,7 @@ node {
     // JWT key credentials.
     // ----
       withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
-        stage('Deploye Code') {
+        stage('authorisatiom') {
             if (isUnix()) {
                 rc = sh returnStatus: true, script: "${toolbelt} force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
             }else{
@@ -45,7 +45,11 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
         stage('Create Test Scratch Org') {
+<<<<<<< HEAD
                 rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername"
+=======
+                rc = command "${toolbelt} force:org:create -s -f config/project-scratch-def.json -a ebikes"
+>>>>>>> 7df4f3d50fb1c08e9c0909a8c2899447e61789b8
                 if (rc != 0) {
                     error 'Salesforce test scratch org creation failed.'
                 }
