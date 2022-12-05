@@ -45,22 +45,13 @@ node {
             }
             if (rc != 0) { error 'hub org authorization failed' }
         }
-        stage('Create Test Scratch Org') {
-                rc = command "${toolbelt} force:org:create -f project-scratch-def.json -a MyScratchOrg --setdefaultusername" 
-                rc = command "${toolbelt} force:org:create -f project-scratch-def.json --nonamespace"
-                rc = command "${toolbelt} sfdx force:org:create -f config/project-scratch-def.json --durationdays 1"
-
-            }
-            // -------------------------------------------------------------------------
-// Run unit tests in test scratch org.
-// -------------------------------------------------------------------------
-
-stage('Run Tests In Test Scratch Org') {
-    rc = command "${toolbelt}/sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+       stage('Create Test Scratch Org') {
+    rc = command "${toolbelt}/sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
     if (rc != 0) {
-        error 'Salesforce unit test run in test scratch org failed.'
-    }
-}
+        error 'Salesforce test scratch org creation failed.'
+                }
+         }
+            //
 
         
     }
