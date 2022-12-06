@@ -1,12 +1,17 @@
 {
-    "orgName": "MyCompany",
+    "orgName": "Pure Aloe",
     "edition": "Developer",
-    "workitem__c": "W-12345678",
-    "release__c": "June 2018 pilot",
-    
     "settings": {
-        "omniChannelSettings": {
-             "enableOmniChannel": true
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        },
+        "securitySettings": {
+            "passwordPolicies": {
+                "enableSetPasswordInApi": true
+            }
+        },
+        "mobileSettings": {
+            "enableS1EncryptedStoragePref2": false
+        }
     }
-          }
 }
