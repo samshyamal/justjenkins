@@ -51,7 +51,13 @@ node {
            error 'Salesforce test scratch org creation failed.'
                 }
          }
-            //
+
+         stage('Push To Test Scratch Org') {
+              rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ciorg"
+              if (rc != 0) {
+              error 'Salesforce push to test scratch org failed.'
+    }
+}   
 
         
     }
