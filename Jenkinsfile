@@ -51,11 +51,11 @@ node {
          }
  
  stage('set password for org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:user:password:generate --targetusername ciorg"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:password:generate --targetusername ciorg"
        }         
 
  stage('Display scratch org stats') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:user:display --targetusername ciorg"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:display --targetusername ciorg"
        }
          stage('Push To Test Scratch Org') 
            {
@@ -68,5 +68,5 @@ node {
 
         
     }
-    
+    sfdx force:user:password:generate --targetusername admin-user --length 20
 }
