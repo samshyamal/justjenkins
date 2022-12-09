@@ -46,7 +46,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
        stage('Create Test Scratch Org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
         def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rc)
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
@@ -54,6 +54,11 @@ node {
             println(SFDC_USERNAME)
             robj = null
          }
+
+         stage('Set Default Scratch Org') {
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set --global defaultusername=${SFDC_USERNAME} --json"
+            if (rc != 0) { error 'Default scratch org failed' }
+        }
 
          stage('Push To Test Scratch Org') {
               rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ciorg"
