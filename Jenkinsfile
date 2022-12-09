@@ -46,22 +46,22 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
        stage('Create Test Scratch Org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
-        
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+       
          }
+ 
+ stage('set password for org') {
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:user:password:generate --targetusername ciorg"
+       }         
 
-         stage('Set Default Scratch Org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set --global defaultusername=${SFDC_USERNAME} --json"
-            if (rc != 0) { error 'Default scratch org failed' }
-        }
-
-         stage('Push To Test Scratch Org') {
+         stage('Push To Test Scratch Org') 
+           {
               rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ciorg"
               println(rc)
               if (rc != 0) {
               error 'Salesforce push to test scratch org failed.'
-    }
-}   
+                   }
+            }   
 
         
     }
