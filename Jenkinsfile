@@ -54,6 +54,9 @@ node {
             rc = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:user:password:generate --targetusername ciorg"
        }         
 
+ stage('Display scratch org stats') {
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:user:display --targetusername ciorg"
+       }
          stage('Push To Test Scratch Org') 
            {
               rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ciorg"
