@@ -1,0 +1,127 @@
+{
+  "versionDetail": {
+    "cliVersion": "sfdx-cli/7.178.0",
+    "architecture": "win32-x64",
+    "nodeVersion": "node-v18.12.0",
+    "pluginVersions": [
+      "@oclif/plugin-autocomplete 1.3.6 (core)",
+      "@oclif/plugin-commands 2.2.1 (core)",
+      "@oclif/plugin-help 5.1.18 (core)",
+      "@oclif/plugin-not-found 2.3.8 (core)",
+      "@oclif/plugin-plugins 2.1.6 (core)",
+      "@oclif/plugin-update 3.0.6 (core)",
+      "@oclif/plugin-version 1.1.3 (core)",
+      "@oclif/plugin-warn-if-update-available 2.0.13 (core)",
+      "@oclif/plugin-which 2.2.0 (core)",
+      "alias 2.1.8 (core)",
+      "apex 1.3.0 (core)",
+      "auth 2.2.22 (core)",
+      "community 2.0.16 (core)",
+      "config 1.4.22 (core)",
+      "custom-metadata 2.0.4 (core)",
+      "data 2.1.11 (core)",
+      "generator 2.0.11 (core)",
+      "info 2.2.8 (core)",
+      "limits 2.0.13 (core)",
+      "org 2.2.12 (core)",
+      "packaging 1.10.7 (core)",
+      "schema 2.1.15 (core)",
+      "signups 1.2.12 (core)",
+      "source 2.3.4 (core)",
+      "telemetry 2.0.4 (core)",
+      "templates 55.1.0 (core)",
+      "trust 2.1.0 (core)",
+      "user 2.1.19 (core)",
+      "@salesforce/sfdx-plugin-lwc-test 1.0.1 (core)",
+      "salesforce-alm 54.8.3 (core)"
+    ],
+    "osVersion": "Windows_NT 10.0.22621",
+    "shell": "cmd.exe",
+    "rootPath": "C:\\Program Files\\sfdx\\client"
+  },
+  "sfdxEnvVars": [
+    [
+      "SFDX_AUTOUPDATE_DISABLE",
+      "true"
+    ],
+    [
+      "SFDX_BINPATH",
+      "C:\\Program Files\\sfdx\\bin\\\\sfdx.cmd"
+    ],
+    [
+      "SFDX_DISABLE_AUTOUPDATE",
+      "true"
+    ],
+    [
+      "SFDX_UPDATE_INSTRUCTIONS",
+      "Use \"npm update --global sfdx-cli\" to update npm-based installations."
+    ]
+  ],
+  "sfEnvVars": [],
+  "cliConfig": {
+    "_base": "@oclif/core@1.20.4",
+    "debug": 0,
+    "topicSeparator": ":",
+    "warned": false,
+    "commandPermutations": {
+      "validPermutations": {}
+    },
+    "topicPermutations": {
+      "validPermutations": {}
+    },
+    "_commands": {},
+    "_topics": {},
+    "root": "C:\\Program Files\\sfdx\\client",
+    "name": "sfdx-cli",
+    "version": "7.178.0",
+    "channel": "stable",
+    "valid": true,
+    "arch": "x64",
+    "platform": "win32",
+    "windows": true,
+    "bin": "sfdx",
+    "dirname": "sfdx",
+    "flexibleTaxonomy": false,
+    "userAgent": "sfdx-cli/7.178.0 win32-x64 node-v18.12.0",
+    "shell": "cmd.exe",
+    "home": "C:\\Users\\shyam",
+    "cacheDir": "C:\\Users\\shyam\\AppData\\Local\\sfdx",
+    "configDir": "C:\\Users\\shyam\\AppData\\Local\\sfdx",
+    "dataDir": "C:\\Users\\shyam\\AppData\\Local\\sfdx",
+    "errlog": "C:\\Users\\shyam\\AppData\\Local\\sfdx\\error.log",
+    "binPath": "C:\\Program Files\\sfdx\\bin\\\\sfdx.cmd",
+    "nodeEngine": ">=14.0.0"
+  },
+  "pluginSpecificData": {
+    "@salesforce/plugin-source": [
+      {
+        "targetDevHubApiVersion": "56.0"
+      }
+    ]
+  },
+  "diagnosticResults": [
+    {
+      "testName": "salesforcedx plugin not installed",
+      "status": "pass"
+    },
+    {
+      "testName": "no linked plugins",
+      "status": "pass"
+    },
+    {
+      "testName": "using latest or latest-rc CLI version",
+      "status": "unknown"
+    },
+    {
+      "testName": "[@salesforce/plugin-source] sourceApiVersion matches apiVersion",
+      "status": "warn"
+    }
+  ],
+  "suggestions": [
+    "Check https://github.com/forcedotcom/cli/issues for CLI issues posted by the community.",
+    "Check http://status.salesforce.com for general Salesforce availability and performance.",
+    "Couldn't determine latest CLI version due to:\n'npm' is not recognized as an internal or external command,\r\noperable program or batch file.\r\n",
+    "Neither sourceApiVersion nor apiVersion are defined. The commands that deploy and retrieve source use the max apiVersion of the target org in this case. The issue isn't a problem, as long as it's the behavior you actually want."
+  ],
+  "logFilePaths": []
+}
