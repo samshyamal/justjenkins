@@ -68,5 +68,5 @@ node {
 
         
     }
-    sfdx force:user:password:generate --targetusername admin-user --length 20
+   
 }
