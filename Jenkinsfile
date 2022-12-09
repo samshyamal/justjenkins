@@ -47,12 +47,7 @@ node {
         }
        stage('Create Test Scratch Org') {
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
-        def jsonSlurper = new JsonSlurperClassic()
-            def robj = jsonSlurper.parseText(rc)
-            if (robj.status != 0) { error 'org creation failed: ' + robj.message }
-            SFDC_USERNAME=robj.result.username
-            println(SFDC_USERNAME)
-            robj = null
+        
          }
 
          stage('Set Default Scratch Org') {
