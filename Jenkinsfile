@@ -46,20 +46,20 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
         }
        stage('Create Test Scratch Org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --targetdevhubusername avinesh17@force.com --setdefaultusername --definitionfile config/project-scratch-def.json --setalias shyamal --wait 10 --durationdays 1"
        
          }
  
  stage('set password for org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:password:generate --targetusername ciorg"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:password:generate --targetusername shyamal"
        }         
 
  stage('Display scratch org stats') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:display --targetusername ciorg"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:display --targetusername shyamal"
        }
          stage('Push To Test Scratch Org') 
            {
-              rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ciorg"
+              rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername shyamal"
               println(rc)
               if (rc != 0) {
               error 'Salesforce push to test scratch org failed.'
@@ -67,7 +67,7 @@ node {
             }
 
             stage('Run Tests In Test Scratch Org') {
-             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --targetusername shyamal --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
           if (rc != 0) {
                     error 'Salesforce unit test run in test scratch org failed.'
     }
