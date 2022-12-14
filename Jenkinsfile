@@ -59,29 +59,14 @@ node {
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:display --targetusername ${alias}"
         }
 
+
+
+         stage('deploy scratch org stats') {
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:mdapi:deploy -d metadataPackage -u ${alias} -w 5"
+        }
+
             
-        stage('Push To Test Scratch Org') {
-              rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${alias}"
-              println(rc)
-              if (rc != 0) {
-              error 'Salesforce push to test scratch org failed.'
-                   }
-        }
-
-        stage('Run Tests In Test Scratch Org') {
-             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --targetusername ${alias} --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
-          if (rc != 0) {
-                    error 'Salesforce unit test run in test scratch org failed.'
-                       }
-        }
-
-          stage('Run Tests In Test Scratch Org') {
-             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:delete --targetusername ${alias} --noprompt"
-
-          if (rc != 0) {
-                    error 'failed to delete org'
-                       }
-        }
+ 
 
 
         
