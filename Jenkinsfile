@@ -75,13 +75,7 @@ node {
                        }
         }
 
-          stage('Run Tests In Test Scratch Org') {
-             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:org:delete --targetusername ${alias} --noprompt"
-
-          if (rc != 0) {
-                    error 'failed to delete org'
-                       }
-        }
+      
 
 
         
