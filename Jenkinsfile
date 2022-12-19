@@ -55,11 +55,7 @@ node {
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:password:generate --targetusername ${alias}"
         }         
 
-        stage('Display scratch org stats') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:display --targetusername ${alias}"
-        }
-
-            
+                
         stage('Push To Test Scratch Org') {
               rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${alias}"
               println(rc)
@@ -68,14 +64,21 @@ node {
                    }
         }
 
-        stage('Run Tests In Test Scratch Org') {
+        stage('Run apex test') {
              rc = bat returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --targetusername ${alias} --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
           if (rc != 0) {
                     error 'Salesforce unit test run in test scratch org failed.'
                        }
         }
 
-      
+      stage('generate package')
+      {
+         rc = bat returnStatus: true, script: "\"${toolbelt}\"force:source:convert -n 'My_Package'
+"
+          if (rc != 0) {
+                    error 'Failed to generate package'
+                       }
+      }
 
 
         
