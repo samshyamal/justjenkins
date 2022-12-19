@@ -74,7 +74,7 @@ node {
       stage('generate package')
       {
          rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:convert"
-"
+
           if (rc != 0) {
                     error 'Failed to generate package'
                        }
