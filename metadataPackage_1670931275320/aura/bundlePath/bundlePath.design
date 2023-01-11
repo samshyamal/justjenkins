@@ -1,3 +1,0 @@
-<design:component label="Product Bundle Path">
-	<design:attribute name="pathName" datasource="Bundle,Order,Opportunity" label="Path Name" default="Bundle"/>	
-</design:component>
